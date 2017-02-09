@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="TrackingModule">
+<head>
+    <title>Employee Details</title>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="../CSS/Site.css" rel="stylesheet" />
+    <script src="../Scripts/angular.min.js">
+    </script>
+    <script src="../Scripts/bootstrap.min.js">
+    </script>
+    <script src="../Scripts/app.js">
+    </script>
+    <script src="../Controllers/EmployeesController.js"></script>
+</head>
+<body ng-controller="EmployeesController">
+    <h1>{{Title}}</h1>
+    <p>Employee Name - {{Employees.employeeName}}</p>
+    <p>Designation   - {{Employees.designation}}</p>
+    <p>Contact No.   - {{Employees.contactNo}}</p>
+    <p>EMail ID      - {{Employees.eMailID}}</p>
+    <p>Skill Sets    - {{Employees.skillSets}}</p>
+</body>
+</html>
