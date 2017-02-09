@@ -1,0 +1,61 @@
+Use Master
+GO
+CREATE DATABASE ProjectTrackingDB
+GO
+USE ProjectTrackingDB
+GO
+CREATE TABLE Projects
+(
+    ProjectID INT PRIMARY KEY IDENTITY,
+    ProjectName NVARCHAR(100),
+    StartDate DATETIME,
+    EndDate DATETIME,
+    ClientName NVARCHAR(100)
+)
+ 
+CREATE TABLE Employees
+(
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName NVARCHAR(100),
+    Designation NVARCHAR(100),
+    ManagerID INT,
+    ContactNo NVARCHAR(15),
+    EMailID NVARCHAR(30),
+    SkillSets NVARCHAR(100)
+)
+ 
+CREATE TABLE UserStories
+(
+    UserStoryID INT PRIMARY KEY,
+    Story NVARCHAR(4000),
+    ProjectID INT REFERENCES Projects(ProjectID)
+)
+ 
+CREATE TABLE ProjectTasks
+(
+    ProjectTaskID INT PRIMARY KEY IDENTITY,
+    AssignedTo INT REFERENCES Employees(EmployeeID),
+    TaskStartDate DATETIME,
+    TaskEndDate DATETIME,
+    TaskCompletion INT,
+    UserStoryID INT REFERENCES UserStories(UserStoryID)
+)
+ 
+CREATE TABLE ManagerComments
+(
+    ManagerCommentID INT PRIMARY KEY IDENTITY,
+    Comments NVARCHAR(2000),
+    ProjectTaskID INT REFERENCES ProjectTasks(ProjectTaskID)
+)
+
+
+INSERT INTO Employees VALUES(1000,'John Mike','Project Manager',null,'36672566290','john@projects.com','.NET Framework')
+INSERT INTO Employees VALUES(1001,'Mark Andrus','Developer',1000,'3667233322','john@projects.com','.NET Framework, ASP.NET MVC')
+INSERT INTO Employees VALUES(1002,'Johnny Richard','Developer',1000,'3667299999','johnny@projects.com','Angular JS')
+INSERT INTO Employees VALUES(1003,'Maria Andrus','Developer',1000,'3667277777','maria@projects.com','jQuery, JavaScript')
+INSERT INTO Employees VALUES(1004,'Richy Richard','Designer',1000,'3667277771','richy@projects.com','HTML 5, CSS 3')
+INSERT INTO Employees VALUES(1005,'Honey Deskter','Designer',1000,'3667222222','honey@projects.com','HTML 5, CSS 3')
+INSERT INTO Employees VALUES(1006,'Doketo Richy','Developer',1000,'36672512223','diketo@projects.com','.NET Framework, ASP.NET, ASP.NET MVC')
+INSERT INTO Employees VALUES(1007,'June M.','Designer',1000,'3667278787','june@projects.com','HTML 5, CSS 3')
+INSERT INTO Employees VALUES(1008,'Anjala Johns','Developer',1000,'3667298989','anjala@projects.com','.NET Framework')
+INSERT INTO Employees VALUES(1009,'Austin A.','Developer',1000,'36672590009','auston@projects.com','SQL Server')
